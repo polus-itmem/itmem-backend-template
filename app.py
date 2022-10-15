@@ -10,7 +10,7 @@ from middlewares import session
 from models import Time
 from routers import router
 
-app = FastAPI(title = 'Template')
+app = FastAPI(title = 'Template', version = '1.0.0')
 
 
 @app.get("/", description = "Server time", response_model = Time)
