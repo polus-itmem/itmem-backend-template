@@ -7,15 +7,14 @@ from starlette.middleware.base import BaseHTTPMiddleware
 
 from config import config
 from middlewares import session
-from models import Time
 from routers import router
 
 app = FastAPI(title = 'Template', version = '1.0.0')
 
 
-@app.get("/", description = "Server time", response_model = Time)
-async def root() -> Time:
-    return Time(time = time.time())
+@app.get("/", description = "Server time", response_model = int)
+async def time():
+    return time.time()
 
 
 app.add_middleware(BaseHTTPMiddleware,

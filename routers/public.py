@@ -4,8 +4,6 @@ import models
 router = APIRouter()
 
 
-@router.get('/test', response_model = models.Time)
+@router.get('/test', response_model = models.Test)
 async def add_cars(request: Request):
     session = request.scope['session']
-
-

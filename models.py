@@ -5,5 +5,5 @@ from strenum import StrEnum
 from pydantic import BaseModel
 
 
-class Time(BaseModel):
-    time: int
+class Test(BaseModel):
+    data: str
