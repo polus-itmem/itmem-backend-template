@@ -14,7 +14,7 @@ app = FastAPI(title = 'Template', version = '1.0.0')
 
 
 @app.get("/", description = "Server time", response_model = int)
-async def time():
+async def time_check():
     return time.time()
 
 engine = create_connect.create_connection(config.db.get_secret_value())
@@ -25,4 +25,4 @@ app.add_middleware(BaseHTTPMiddleware,
 asyncio.run(create_connect.create_all(engine))
 app.include_router(router)
 
-uvicorn.run(app)
+uvicorn.run(app, host = config.host, port = config.port)

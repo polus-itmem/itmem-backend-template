@@ -1,6 +1,7 @@
-from fastapi import Request, Response, HTTPException
+from fastapi import Request, Response
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import sessionmaker
+from starlette.responses import JSONResponse
 
 from config import config
 
@@ -17,7 +18,7 @@ class SessionMiddleware:
 
     async def __call__(self, request: Request, call_next):
         if request.headers.get('key') != config.web_secret.get_secret_value():
-            return HTTPException(status_code=401, detail="error microservice key")
+            return JSONResponse(status_code=401, content = {'detail': 'microservice key is incorrect'})
 
         async with self.session_maker() as session:
             async with session.begin():
