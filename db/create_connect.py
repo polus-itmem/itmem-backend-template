@@ -1,5 +1,5 @@
 from sqlalchemy.ext.asyncio import create_async_engine
-from models import Base
+from db.models import Base
 
 
 def create_connection(address):
